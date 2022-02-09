@@ -7,6 +7,93 @@
     <title>Document</title>
 </head>
 <body>
+    <form id="input" style="text-align: center">
+        <h3>Calculadora</h3>
+        <input type="number" id="val1" placeholder="Valor 1"><br>
+        <input type="number" id="val2" placeholder="Valor 2"><br>
+        <input type="button" id="btnSum" value="+">&nbsp;
+        <input type="button" id="btnSub" value="–">&nbsp;
+        <input type="button" id="btnMul" value="x">&nbsp;
+        <input type="button" id="btnDiv" value="÷"><br>
+        <input type="number" id="result" placeholder="Resultado" readonly>
+    </form>
+
     
+
+    <script>
+        function el(elId) {
+            return document.getElementById(elId);
+        }
+
+        el('btnSum').onclick = sum;
+
+        function sum() {
+            let val1 = parseFloat(el('val1').value)
+            let val2 = parseFloat(el('val2').value)
+
+            if (notNumber(val1, val2)) return false;
+
+            result = val1 + val2
+
+            el('result').value = result
+            
+
+        }
+
+        el('btnSub').onclick = sub;
+
+        function sub () {
+            let val1 = parseFloat(el('val1').value)
+            let val2 = parseFloat(el('val2').value)
+
+            if (notNumber(val1, val2)) return false;
+
+            result = val1 - val2
+
+            el('result').value = result
+        }
+
+        el('btnMul').onclick = mul;
+        function mul () {
+            let val1 = parseFloat(el('val1').value)
+            let val2 = parseFloat(el('val2').value)
+
+            if (notNumber(val1, val2)) return false;
+
+            result = val1 * val2
+
+            el('result').value = result
+        }
+
+        el('btnDiv').onclick = div;
+        function div () {
+            let val1 = parseFloat(el('val1').value)
+            let val2 = parseFloat(el('val2').value)
+
+            if (notNumber(val1, val2)) return false;
+
+            result = val1 / val2
+
+            el('result').value = result
+        }
+
+
+        function notNumber(v1, v2) {
+            if (isNaN(v1) || isNaN(v2)) {
+                window.alert("Digite os valores para calcular.")
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        el('val1').onfocus = function () {
+             el('val1').select(); 
+            }
+        
+        el('val2').onblur = function () {
+            el('val2').select();
+        }
+    </script>
 </body>
 </html>
